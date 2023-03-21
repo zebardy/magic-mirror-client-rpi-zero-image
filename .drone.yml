@@ -1,0 +1,37 @@
+---
+kind: pipeline
+type: kubernetes
+name: magic-mirror-rpi-zero
+
+platform:
+  os: linux
+  arch: aarch
+
+trigger:
+  branches:
+    - master
+  event:
+    - push
+    - tag
+
+steps:
+  - name: pi-gen
+    image: zebardy/drone_pi-gen
+    privileged: true
+    settings:
+      first_user_pass: raspberry
+      enable_ssh: 1
+      pi_gen_dir: pi-gen
+  - name: gitea_release
+    image: plugins/gitea-release
+    settings:
+      api_key:
+        from_secret: gitea_release_token
+      base_url: 
+        from_secret: gitea_url
+      files: 
+        - deploy/*.zip
+        - deploy/*.info
+        - deploy/build.log
+    when:
+      event: tag
