@@ -3,6 +3,8 @@
 #cd MagicMirror/
 #npm run install-mm
 #cp config/config.js.sample config/config.js
+ls -lrt /home/
+cat /etc/passwd
 cat <<EOT > /home/pi/bin/start-chromium.sh
 #!/bin/sh
 
