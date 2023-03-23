@@ -5,6 +5,8 @@
 #cp config/config.js.sample config/config.js
 ls -lrt /home/
 cat /etc/passwd
+mkdir /home/pi/bin
+chown pi:pi /home/pi/bin
 cat <<EOT > /home/pi/bin/start-chromium.sh
 #!/bin/sh
 
@@ -27,6 +29,7 @@ chromium-browser \
         --kiosk http://$host:$port &
 EOT
 
+ls -lrt /home/pi/.config/lxsession/
 cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
