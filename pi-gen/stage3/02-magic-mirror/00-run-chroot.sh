@@ -29,8 +29,8 @@ chromium-browser \
         --kiosk http://$host:$port &
 EOT
 
-ls -lrt /home/pi/.config
-ls -lrt /home/pi/.config/lxsession/
+#ls -lrt /home/pi/.config
+#ls -lrt /home/pi/.config/lxsession/
 mkdir -p /home/pi/.config/lxsession/LXDE-pi
 chown -R pi:pi /home/pi/.config
 cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
