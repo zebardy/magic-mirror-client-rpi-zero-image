@@ -22,6 +22,10 @@ steps:
       first_user_pass: raspberry
       disable_first_boot_user_rename: 1
       enable_ssh: 1
+      target_hostname: magic-mirror
+      pubkey_ssh_first_user: 
+        from_secret: ssh_public_key
+      pubkey_only_ssh: 1
       pi_gen_dir: pi-gen
   - name: gitea_release
     image: plugins/gitea-release

@@ -42,6 +42,7 @@ cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
 EOT
 
 mkdir -pv /etc/systemd/system/getty@tty1.service.d
+mkdir /etc/this_is_a_test
 
 cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << EOF
 [Service]
