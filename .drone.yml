@@ -18,6 +18,9 @@ steps:
   - name: pi-gen
     image: zebardy/drone_pi-gen
     privileged: true
+    volumes:
+    - name: apt-cache
+      path: /apt-cache
     settings:
       first_user_pass: raspberry
       disable_first_boot_user_rename: 1
@@ -28,6 +31,7 @@ steps:
       pubkey_only_ssh: 1
       pi_gen_dir: pi-gen
       use_qcow2: 1
+      pigen_docker_opts: "-v /apt-cache:/var/cache/apt/archives"
   - name: gitea_release
     image: plugins/gitea-release
     settings:
@@ -41,3 +45,9 @@ steps:
         - deploy/build.log
     when:
       event: tag
+
+volumes:
+- name: apt-cache
+  claim:
+    name: apt-cache
+    read_only: false
