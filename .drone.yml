@@ -27,6 +27,7 @@ steps:
         from_secret: ssh_public_key
       pubkey_only_ssh: 1
       pi_gen_dir: pi-gen
+      use_qcow2: 1
   - name: gitea_release
     image: plugins/gitea-release
     settings:
