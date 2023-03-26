@@ -21,6 +21,8 @@ steps:
     volumes:
     - name: apt-cache
       path: /apt-cache
+    - name: drone-output
+      path: ${DRONE_WORKSPACE}/output
     settings:
       first_user_pass: raspberry
       disable_first_boot_user_rename: 1
@@ -31,7 +33,7 @@ steps:
       pubkey_only_ssh: 1
       pi_gen_dir: pi-gen
       use_qcow2: 1
-      pigen_docker_opts: "-v /apt-cache:/var/cache/apt/archives"
+      pigen_docker_opts: "-v /apt-cache:/var/cache/apt"
   - name: gitea_release
     image: plugins/gitea-release
     settings:
@@ -51,3 +53,6 @@ volumes:
   claim:
     name: apt-cache
     read_only: false
+- name: drone-output
+  host:
+    path: /var/lib/cache
