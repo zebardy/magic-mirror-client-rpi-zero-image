@@ -32,7 +32,7 @@ steps:
         from_secret: ssh_public_key
       pubkey_only_ssh: 1
       pi_gen_dir: pi-gen
-      use_qcow2: 1
+      use_qcow2: 0
       pigen_docker_opts: "-v /apt-cache:/var/cache/apt"
   - name: gitea_release
     image: plugins/gitea-release
@@ -55,4 +55,4 @@ volumes:
     read_only: false
 - name: drone-output
   host:
-    path: /var/lib/cache
+    path: /var/cache/drone
