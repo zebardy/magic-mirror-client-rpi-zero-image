@@ -1,12 +1,6 @@
-#cd ~
-#git clone https://github.com/MichMich/MagicMirror
-#cd MagicMirror/
-#npm run install-mm
-#cp config/config.js.sample config/config.js
-ls -lrt /home/
-cat /etc/passwd
 mkdir /home/pi/bin
 chown pi:pi /home/pi/bin
+
 cat <<EOT > /home/pi/bin/start-chromium.sh
 #!/bin/sh
 
@@ -38,8 +32,6 @@ chromium-browser \
         --kiosk http://$host:$port &
 EOT
 
-#ls -lrt /home/pi/.config
-#ls -lrt /home/pi/.config/lxsession/
 mkdir -p /home/pi/.config/lxsession/LXDE-pi
 chown -R pi:pi /home/pi/.config
 cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
@@ -51,7 +43,6 @@ cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
 EOT
 
 mkdir -pv /etc/systemd/system/getty@tty1.service.d
-#mkdir /etc/this_is_a_test
 
 cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << EOF
 [Service]
