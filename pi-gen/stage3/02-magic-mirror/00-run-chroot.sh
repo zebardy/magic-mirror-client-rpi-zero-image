@@ -25,6 +25,15 @@ chromium-browser \
         --disable-save-password-bubble \
         --disk-cache-dir=\$CHROMIUM_TEMP/cache/ \
         --user-data-dir=\$CHROMIUM_TEMP/user_data/ \
+	--use-gl=egl \
+	--disable-webgl \
+	--enable-accelerated-2d-canvas \
+	--enable-auto-reload \
+	--disable-component-update \
+	--disable-web-security \
+	--disable-features=Widevine \
+	--aggressive-cache-discard \
+	--disable-mipmap-generation
         --start-maximized \
         --kiosk http://$host:$port &
 EOT
@@ -42,7 +51,7 @@ cat <<EOT > /home/pi/.config/lxsession/LXDE-pi/autostart
 EOT
 
 mkdir -pv /etc/systemd/system/getty@tty1.service.d
-mkdir /etc/this_is_a_test
+#mkdir /etc/this_is_a_test
 
 cat > /etc/systemd/system/getty@tty1.service.d/autologin.conf << EOF
 [Service]
